@@ -7,7 +7,7 @@ from pyunpack import Archive
 # it is necessary to have installed the patool package to use pyunpack (pip install patool)
 
 
-def zipToSRT(path):
+def zip_to_srt(path):
 	"""Uncompress the zip file obtained from the sub-downloader defined by the path into the corresponding .srt
 	subtitles
 
@@ -31,7 +31,7 @@ def zipToSRT(path):
 		raise FileNotFoundError("Requested file not found, make sure of the route of the file")
 
 
-def listLanguages(path):
+def list_languages(path):
 	"""From the temp folder created with zipToSRT read the file names searching for [language] and return the
 	languages as a list, it will return an empty list if the naming convention is not followed
 
@@ -48,7 +48,7 @@ def listLanguages(path):
 		raise FileNotFoundError("Incorrect path (it does not exist)")
 
 
-def selectLanguage(path, language, targetPath):
+def select_language(path, language, targetPath):
 	"""From the temp folder created with zipToSRT, selecting one of the languages form listLanguages
 	and giving a path to copy the files to: copy the selected language subtitles to the destination folder,
 	if the folder does not exist it will create it along with all needed parent directories
@@ -64,6 +64,6 @@ def selectLanguage(path, language, targetPath):
 
 
 # testing
-zipToSRT("C:\\Users\\Admin\\Downloads\\test\\Mob Psycho100 II Sub 09.zip")
-print(listLanguages("C:\\Users\\Admin\\Downloads\\test\\tmp"))
-selectLanguage("C:\\Users\\Admin\\Downloads\\test\\tmp", "Español (España)", "C:\\Users\\Admin\\Downloads\\test")
+zip_to_srt("C:\\Users\\Admin\\Downloads\\test\\Mob Psycho100 II Sub 09.zip")
+print(list_languages("C:\\Users\\Admin\\Downloads\\test\\tmp"))
+select_language("C:\\Users\\Admin\\Downloads\\test\\tmp", "Español (España)", "C:\\Users\\Admin\\Downloads\\test")
