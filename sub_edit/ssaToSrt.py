@@ -4,7 +4,6 @@ from shutil import copyfile
 from zipfile import ZipFile
 from pyasstosrt import Subtitle
 from pyunpack import Archive
-# it is necessary to have installed the patool package to use pyunpack (pip install patool)
 
 
 def zip_to_srt(path):
@@ -26,7 +25,7 @@ def zip_to_srt(path):
 		# after that it converts all .ass and .ssa files into .srt
 		[Subtitle(Path(route)).export(tempPath) for route in scandir(tempPath) if route.path.endswith(".ass") or route.path.endswith(".ssa")]
 		# and finally it deletes all files that are not .srt subtitles
-		[remove(route) for route in scandir(tempPath) if not route.path.endswith("srt")]
+		[remove(route) for route in scandir(tempPath) if not route.path.endswith(".srt")]
 	else:
 		raise FileNotFoundError("Requested file not found, make sure of the route of the file")
 
@@ -62,8 +61,3 @@ def select_language(path, language, targetPath):
 		makedirs(targetPath)
 	[copyfile(filePath, targetPath + filePath.path[filePath.path.rindex("\\"):]) for filePath in scandir(path) if filePath.path.__contains__(language)]
 
-
-# testing
-zip_to_srt("C:\\Users\\Admin\\Downloads\\test\\Mob Psycho100 II Sub 09.zip")
-print(list_languages("C:\\Users\\Admin\\Downloads\\test\\tmp"))
-select_language("C:\\Users\\Admin\\Downloads\\test\\tmp", "Español (España)", "C:\\Users\\Admin\\Downloads\\test")
