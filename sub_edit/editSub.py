@@ -44,9 +44,11 @@ class EditSub:
 		return [subNumber, timestamp, text]
 
 	def add_subtitles(self):
+		pass
 		# todo
 
 	def del_subtitles(self):
+		pass
 		# todo
 
 	def edit_subtitles(self, component, selected, modified):
@@ -82,6 +84,7 @@ class EditSub:
 						file.write(self.subtitles[j][i] + "\n")
 
 	def __move_subtitles_depending_on_timestamp(self):
+		pass
 		# todo
 
 loadSubs = EditSub("D:\\Games\\downloads\\Blue Bloods 13x09 - Nothing Sacred (English).srt")
