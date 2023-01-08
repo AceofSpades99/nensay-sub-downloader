@@ -47,8 +47,8 @@ def list_languages(path):
 		raise FileNotFoundError("Incorrect path (it does not exist)")
 
 
-def select_language(path, language, targetPath):
-	"""From the temp folder created with zipToSRT, selecting one of the languages form listLanguages
+def select_language(path, targetPath, language=""):
+	"""From the temp folder created with zipToSRT, selecting one of the languages from listLanguages (or none if empty)
 	and giving a path to copy the files to: copy the selected language subtitles to the destination folder,
 	if the folder does not exist it will create it along with all needed parent directories
 
