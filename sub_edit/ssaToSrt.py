@@ -15,7 +15,8 @@ def zip_to_srt(path):
 	Raises:
 		FileNotFoundError: if the file does not exist
 	"""
-	if Path(path).exists():
+	path = path.replace("/", "\\")
+	if path != "" and Path(path).exists():
 		tempPath = path[:path.rindex("\\") + 1] + "tmp"
 		# first it opens and extracts the file once
 		with ZipFile(path, 'r') as target:
@@ -25,7 +26,7 @@ def zip_to_srt(path):
 		# after that it converts all .ass and .ssa files into .srt
 		[Subtitle(Path(route)).export(tempPath) for route in scandir(tempPath) if route.path.endswith(".ass") or route.path.endswith(".ssa")]
 		# and finally it deletes all files that are not .srt subtitles
-		[remove(route) for route in scandir(tempPath) if not route.path.endswith(".srt")]
+		[remove(route) for route in scandir(tempPath) if not route.path.endswith(".srt") and Path(route).is_file()]
 	else:
 		raise FileNotFoundError("Requested file not found, make sure of the route of the file")
 
